@@ -9,7 +9,7 @@ namespace CMP1903M_Assessment_1_Base_Code
     public class Input
     {
         //Handles the text input for Assessment 1
-        string text = "nothing";
+        string text = "";
         
         //Method: manualTextInput
         //Arguments: none
@@ -17,7 +17,15 @@ namespace CMP1903M_Assessment_1_Base_Code
         //Gets text input from the keyboard
         public string manualTextInput()
         {
+            Console.WriteLine("Please enter the text you wish to analyse. Use * to indicate the end of the text:");
 
+            while(true)
+            {
+                Console.Write(">> ");
+                text += Console.ReadLine();
+                if(text.Contains("*")) break;
+                else text += "\n";
+            }
             return text;
         }
 
@@ -27,7 +35,7 @@ namespace CMP1903M_Assessment_1_Base_Code
         //Gets text input from a .txt file
         public string fileTextInput(string fileName)
         {
-
+            text = File.ReadAllText(fileName);
             return text;
         }
 
