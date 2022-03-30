@@ -30,11 +30,11 @@ namespace CMP1903M_Assessment_1_Base_Code
         public Analyse(){
             characterSets.Add(ALPHABET.ToUpper()); //Capital letters
             characterSets.Add(ALPHABET); //Lowercase letters
-            characterSets[VOWELS] += characterSets[VOWELS].ToUpper();
-            characterSets[CONSONANTS] += characterSets[CONSONANTS].ToUpper();
+            characterSets[VOWELS] += characterSets[VOWELS].ToUpper(); //Vowels
+            characterSets[CONSONANTS] += characterSets[CONSONANTS].ToUpper(); //Consonants
 
             foreach(char letter in ALPHABET) //Add a separate character set for every letter
-                characterSets.Add(letter.ToString() + letter.ToString().ToUpper());
+                characterSets.Add(letter.ToString() + letter.ToString().ToUpper()); //Which is both the lower and uppercase version of that letter
         }
         
         //Method: analyseText

@@ -37,7 +37,6 @@ namespace CMP1903M_Assessment_1_Base_Code
                     text = input.fileTextInput(Console.ReadLine());
 
                     //Make a WordCount Object to count the long words
-
                     var wordCount = new WordCount();
 
                     //Write all of the long words to a file
@@ -50,8 +49,9 @@ namespace CMP1903M_Assessment_1_Base_Code
                 }
                 catch(FileNotFoundException) //Handle invalid file names
                 {
-                    Console.WriteLine("Sorry, that file does not exist on the disk. Press any key to continue.");
-                    Console.ReadKey();
+                    Console.WriteLine("Sorry, that file does not exist on the disk.");
+                }catch(UnauthorizedAccessException){ //Handle when a directory path is entered
+                    Console.WriteLine("Sorry, you do not have permission to write to that path.");
                 }
             }
 
@@ -71,13 +71,17 @@ namespace CMP1903M_Assessment_1_Base_Code
             //Allow the user to write the results of the analysis to a file
             //This implements the suggestion to add more methods to the Report class
             if(getUserChoice("Would you like to output the results to a file?")){
-                while(true){
+                while(true){ //Keep going until a valid path is entered
                     try{
+                        //Get a file path from the user
                         Console.Write("Please enter the path to write to: ");
+                        //Write the report to this file path
                         report.outputFile(parameters, Console.ReadLine());
                         break;
-                    }catch(IOException){
-                        Console.WriteLine("Sorry, that is not a valid file name");
+                    }catch(IOException){ //Handle invalid file names
+                        Console.WriteLine("Sorry, that is not a valid file name.");
+                    }catch(UnauthorizedAccessException){ //Handle when directory paths are entered
+                        Console.WriteLine("Sorry, you do not have permission to write to that path.");
                     }
                 }
             }

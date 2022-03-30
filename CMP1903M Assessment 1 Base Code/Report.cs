@@ -45,15 +45,16 @@ namespace CMP1903M_Assessment_1_Base_Code
         //Since other classes only need to write the analysis to the console or a file
         //And do not need to know the analysis string
         private string generateOutput(List<int> values){
+            //Initialise output string
             string output = "";
             
             int i = 0;
-            for(; i < reportNames.Count; i++)
+            for(; i < reportNames.Count; i++) //For all named analysis points
                 output += $"number of {reportNames[i]} = {values[i]}\n";
             
             output += "\nLetter frequencies:";
 
-            for(; i < values.Count; i++)
+            for(; i < values.Count; i++) //For all letter frequencies
                 output += $"\n{Analyse.ALPHABET[i - reportNames.Count]}: {values[i]}";
             return output;
         }

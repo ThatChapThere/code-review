@@ -19,11 +19,12 @@ namespace CMP1903M_Assessment_1_Base_Code
         {
             Console.WriteLine("Please enter the text you wish to analyse. Use * to indicate the end of the text:");
 
+            //Keep taking in lines
             while(true)
             {
                 Console.Write(">> ");
-                text += Console.ReadLine();
-                if(text.Contains("*")) break;
+                text += Console.ReadLine(); //Add every line to the text
+                if(text.Contains("*")) break; //Stop when a line contains an *
                 else text += "\n";
             }
             return text;
